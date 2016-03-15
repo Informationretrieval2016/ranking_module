@@ -1,1 +1,21 @@
-# ranking_module
+#Ranking Module
+
+The ranking module of Furnito is used to create a meaningful ranking for query terms from a document set.
+
+It currently consists of three parts:
+ - TF (term frequency)
+ - IDF (inverted document frequency)
+ - TF-IDF (combining the two previous parts)
+
+TF currently consists of multiple options so performance of each options can be measured. The options are:
+ - Raw frequency
+ - Log Normalized
+ - Double Normalized at 0.5
+ - Double Normalized at K
+
+IDF currently consists of the following options:
+ - Normal IDF
+ - Smoothed IDF
+ - Maxed IDF
+
+https://en.wikipedia.org/wiki/Tf–idf#Definition
