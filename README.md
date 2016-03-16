@@ -20,4 +20,4 @@ IDF currently consists of the following options:
 
 https://en.wikipedia.org/wiki/Tf–idf#Definition
 
-/TODO: Vector Space Model - @http://blog.josephwilk.net/projects/building-a-vector-space-search-engine-in-python.html
+/TODO: Vector Space Model - http://blog.josephwilk.net/projects/building-a-vector-space-search-engine-in-python.html
