@@ -21,3 +21,4 @@ IDF currently consists of the following options:
 https://en.wikipedia.org/wiki/Tf–idf#Definition
 
 /TODO: Vector Space Model - http://blog.josephwilk.net/projects/building-a-vector-space-search-engine-in-python.html
+/Explanation VSM: http://www.site.uottawa.ca/~diana/csi4107/cosine_tf_idf_example.pdf
