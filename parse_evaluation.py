@@ -1,29 +1,25 @@
 import csv
 import pandas as pd
-# import nltk
+from os import listdir
+from os.path import isfile, join
 
 class Parse_Evaluation:
 	def __init__(self):
-		self.fname = "/Users/wesleyquispel/Downloads/e1.csv"
+		self.path = "/Users/wesleyquispel/Downloads/evaluation_data-master"
 
-	# def read_csv(self):
-	# 	df = pd.read_csv(self.fname, skiprows = 1)
-	# 	for column in df:
-	# 		print column
-
-
-	def read_csv(self):
+	def read_csv(self, fname):
 		res = []
 		res2 = []
-		with open(self.fname, 'rb') as eval_csv:
+		flocation = self.path+'/'+fname
+		print "File: "+fname
+		with open(flocation, 'rb') as eval_csv:
 			csv_reader = csv.reader(eval_csv, delimiter=',', quotechar = '"')
 			for row in csv_reader:
 				for item in row:
 					item = item.split("'")[1:2]
-					string = str(item).strip('[]')
-					
-					new_string = string.replace("/home/wb/Documents/furniture/", "")
-					res.append(new_string)
+					strippedstring = str(item).strip('[]')
+					string = strippedstring.replace("/home/wb/Documents/furniture/", "")
+					res.append(string)
 		for filename in res:
 			if filename == '':
 				pass
@@ -33,6 +29,20 @@ class Parse_Evaluation:
 		res2 = list(set(res2))
 		return res2
 
+	def load_all_documents(self):
+		'''
+		@usage: load all furniture files into list
+		@return: list of file names
+		'''
+		#load all file names from file path
+		file_names = [f for f in listdir(self.path) if isfile(join(self.path, f))]
+		return file_names
+
 
 pe = Parse_Evaluation()
-pe.read_csv()
+files = pe.load_all_documents()
+for file in files:
+	evaluationset = pe.read_csv(file)
+	res = pd.DataFrame({file: evaluationset})
+	saveloc = pe.path+'/processed_'+file
+	res.to_csv(saveloc, spec = ",")
